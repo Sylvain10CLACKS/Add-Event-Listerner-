@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .darkMode {
+            background-color: black;
+            color: white;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="darkMode">Dark Mode</button>
+        <h1>Hey, I am Sylvain</h1>
+        <p>
+            A student of coding at ALIGHT Mahama coding school
+            with basic backend skills and strong frontend skills.
+        </p>
+        <button>Hire Me</button>
+    </div>
+    <script>
+        const bodyElement = document.body;
+        const darkModeButton = document.getElementById("darkMode");
+
+        darkModeButton.addEventListener("click", () => {
+            bodyElement.classList.toggle("darkMode");
+
+            
+            if (bodyElement.classList.contains("darkMode")) {
+                darkModeButton.textContent = "Light Mode";
+            } else {
+                darkModeButton.textContent = "Dark Mode";
+            }
+        });
+    </script>
+</body>
+</html>

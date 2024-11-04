@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="Description">
+        <div class="DescrptionTwo">
+            <div class="box"></div>
+                <h3>Join our coding school quizsystem.</h3>
+                <p id="test">
+                    test your knowledge , track your progress, and
+                    become a better programmer with our 
+                    quiz system.
+                </p>
+        </div>
+        <div class="inPutArea">
+            <h>Create Account</h>
+            <p id="start">Start your coding journey today</p>
+            <label for="fullNames">Full name</label>
+            <input type="text" id="fullNames" oninput="handleNameMessage()" required>
+            <p id="namesMessage"></p>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" oninput="hundleEmailMessage()" required>
+            <p id="emailMessage"></p>
+    
+            <label for="selectors">Programming Experiance</label>
+            <select name="Select your level" id="selectors">
+                <option value="Select your level">Select your level</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Interme diate</option> 
+                <option value="Advanced">Advanced</option>
+            </select>
+    
+            <label for="password">Password</label>
+            <input type="password" id="password" oninput="handlePasswordMessage()" required>
+            <div style="display: flex; flex-direction: row; gap: 20px;" >
+                <p id="passMsg" style="font-size: 10px; color: rgb(199, 192, 192); margin-top: -5px;">Password strength</p>
+                <div id="passBox" style="height: 3px; width: 230px; background-color: rgb(204, 198, 198);"></div>
+            </div>
+            <p id="passreq" style="font-size: 9px; color: red; margin-top: -20px;"></p>
+            
+            <button id="btn">Create Account</button>
+
+            <p id="already">Already have an account?<span id="login">Login here</span> </p>
+        </div>
+    </div>
+    <script src="index.js" defer></script>
+</body>
+</html>

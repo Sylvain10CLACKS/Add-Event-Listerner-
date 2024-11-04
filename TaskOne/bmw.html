@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="Msg" placeholder="Tell us anything."><br>
+    <p id="screen"></p>
+    
+    <script>
+        const inPutElement=document.getElementById("Msg");
+        const messageElement = document.getElementById("screen")[0];
+
+        messageElement.addEventListener("click", function() {
+            const comment = document.getElementById("Msg").value;
+            messageElement.innerHTML = comment;
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Text Display</title>
+</head>
+<body>
+    <input type="text" id="Msg" placeholder="Tell us anything."><br>
+    <p id="display"></p>
+    
+    <script>
+        const inputElement = document.getElementById("Msg");
+        const displayElement = document.getElementById("display");
+
+        // Listen for input event on the text field
+        inputElement.addEventListener("input", function() {
+            const comment = inputElement.value;
+            displayElement.innerHTML = comment;
+        });
+    </script>
+</body>
+</html> -->

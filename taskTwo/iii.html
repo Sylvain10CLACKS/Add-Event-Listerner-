@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Manager</title>
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+
+        section {
+            box-shadow: 2px 4px 8px 1px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 700px;
+            background-color: white;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .Amn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #icon {
+            height: 40px;
+            width: 50px;
+            border-radius: 2px;
+        }
+
+        #book {
+            color: blue;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        #textArea {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="url"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            flex: 1;
+        }
+
+        #add {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .bookmark-item {
+            display: flex;
+            flex-direction: column;
+            width: 120px;
+            gap: 10px;
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            align-items: center;
+            border-radius: 5px;
+        }
+        
+
+        .bookmark-item h3 {
+            margin: 0;
+            color: #276ef1;
+        }
+
+        .bookmark-item a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #bookmarkList{
+            font-display: flex;
+        }
+
+        .btn-group {
+            margin-left: auto;
+            display: flex;
+            gap: 5px;
+        }
+
+        .edit-btn, .delete-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            background-color: #28a745;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="Amn">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKeEup3mVoEo9hMSECh3Zqn8B_xNQwTltjKQ&s" id="icon" alt="Bookmark Icon"/>
+            <p id="book">Bookmark Manager</p> 
+        </div>
+        <div id="textArea">
+            <input type="text" placeholder="Website name" id="bookmark-name">
+            <input type="url" placeholder="Website URL" id="bookmark-url">
+            <button id="add" onclick="addBookmark()">Add Bookmark</button>
+        </div>
+
+        <div id="bookmarkList"></div>
+    </section>
+
+    <script>
+
+        function bookmarkList (e){("click", function(event){
+  event.preventDefault()
+});
+}
+        let bookmarks = [];
+
+        function addBookmark() {
+            const nameInput = document.getElementById("bookmark-name");
+            const urlInput = document.getElementById("bookmark-url");
+            const name = nameInput.value;
+            const url = urlInput.value;
+
+            if (!name || !url) {
+                alert("Please enter both name and URL.");
+                return;
+            }
+
+            if (!url.includes("https://"&& ("."))){
+                alert("Please enter valid URL");
+                return
+            }
+
+            const bookmark = { id: Date.now(), name, url };
+            bookmarks.push(bookmark);
+            renderBookmarks();
+
+            nameInput.value = "";
+            urlInput.value = "";
+        }
+
+                //My codes Ends  here//
+
+
+        function editBookmark(id) {
+            const bookmark = bookmarks.find(b => b.id === id);
+            const newName = prompt("Edit Website Name", bookmark.name);
+            const newUrl = prompt("Edit Website URL", bookmark.url);
+
+            if (newName && newUrl) {
+                bookmark.name = newName;
+                bookmark.url = newUrl;
+
+                renderBookmarks();
+            }
+        }
+
+        function deleteBookmark(id) {
+            bookmarks = bookmarks.filter(b => b.id !== id);
+            renderBookmarks();
+        }
+
+        function renderBookmarks() {
+            const bookmarkList = document.getElementById("bookmarkList");
+            bookmarkList.innerHTML = "";
+
+            bookmarks.forEach(bookmark => {
+                const bookmarkCard = document.createElement("div");
+                bookmarkCard.className = "bookmark-item";
+
+                bookmarkCard.innerHTML = `
+                    <h3>${bookmark.name}</h3>
+                    <a href="${bookmark.url}" target="_blank">${bookmark.url}</a>
+                    <div class="btn-group">
+                        <button class="edit-btn" onclick="editBookmark(${bookmark.id})">Edit</button>
+                        <button class="delete-btn" onclick="deleteBookmark(${bookmark.id})">Delete</button>
+                    </div>
+                `;
+
+                bookmarkList.appendChild(bookmarkCard);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+section{
+    box-shadow: 2px 4px 8px 1px rgba(0, 0, 0, 0.3);
+    height: 140px;
+    width: 700px;
+}
+
+
+.Amn{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    grid-row: span 3;
+}
+
+#icon{
+    height: 40px;
+    width: 50px;
+    margin-top: 20px;
+    border-radius: 2px;
+}
+
+#book{
+    color: blue;
+    font-size: 30px;
+}
+
+#textArea{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    width: auto;
+    height: auto;
+}
+
+textarea.input{
+    width: 30px;
+}
+
+#add{
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+
+.bookmark-item {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    align-items: center;
+  }
+  
+  .bookmark-item a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .bookmark-item button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Manager</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <section>
+        <div class="Amn">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKeEup3mVoEo9hMSECh3Zqn8B_xNQwTltjKQ&s" id="icon" alt="Bookmark Icon"/>
+            <p id="book">Bookmark Manager</p> 
+        </div>
+        <div id="textArea">
+            <input type="text" placeholder="Website name" id="bookmark-list">
+            <input type="url" placeholder="Website URL" id="bookmark-url">
+            <button id="add" onclick="addBookmark()">Add Bookmark</button>
+        </div>
+
+        <div id="bookmarkList"> 
+
+        </div>
+    </section>
+
+    
+    <script>
+            let bookmarks = [];
+
+function addBookmark() {
+  const nameInput = document.getElementById("bookmark-name");
+  const urlInput = document.getElementById("bookmark-url");
+  const name = nameInput.value;
+  const url = urlInput.value;
+
+  if (!name || !url) {
+    alert("Please enter both name and URL.");
+    return;
+  }
+
+  const bookmark = { id: Date.now(), name, url };
+  bookmarks.push(bookmark);
+  renderBookmarks();
+
+  nameInput.value = "";
+  urlInput.value = "";
+}
+
+function editBookmark(id) {
+  const bookmark = bookmarks.find(b => b.id === id);
+  const newName = prompt("Edit Website Name", bookmark.name);
+  const newUrl = prompt("Edit Website URL", bookmark.url);
+
+  if (newName && newUrl) {
+    bookmark.name = newName;
+    bookmark.url = newUrl;
+    renderBookmarks();
+  }
+}
+
+function deleteBookmark(id) {
+  bookmarks = bookmarks.filter(b => b.id !== id);
+  renderBookmarks();
+}
+
+function renderBookmarks() {
+  const bookmarkList = document.getElementById("bookmark-list");
+  bookmarkList.innerHTML = "";
+
+  bookmarks.forEach(bookmark => {
+    const bookmarkCard = document.createElement("div");
+    bookmarkCard.className = "bookmark";
+
+    bookmarkCard.innerHTML = `
+      <h3>${bookmark.name}</h3>
+      <a href="${bookmark.url}" target="_blank">${bookmark.url}</a>
+      <div class="btn-group">
+        <button class="edit-btn" onclick="editBookmark(${bookmark.id})">✏️ Edit</button>
+        <button class="delete-btn" onclick="deleteBookmark(${bookmark.id})">🗑️ Delete</button>
+      </div>
+    `;
+
+    bookmarkList.appendChild(bookmarkCard);
+  });
+}
+    </script>
+</body>
+</html>
+
